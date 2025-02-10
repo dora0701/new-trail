@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>我爱工作</title>
+    <meta
+      name="description"
+      content="记录和提醒当前最重要的事，可以设置为浏览器起始页tab"
+    />
+    <link
+      rel="icon"
+      href="https://s21.ax1x.com/2024/12/11/pAHTtun.jpg"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="https://s21.ax1x.com/2024/12/11/pAHTtun.jpg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://s21.ax1x.com/2024/12/11/pAHTtun.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/jpg"
+      sizes="32x32"
+      href="https://s21.ax1x.com/2024/12/11/pAHTtun.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/jpg"
+      sizes="16x16"
+      href="https://s21.ax1x.com/2024/12/11/pAHTtun.jpg"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* 添加这一行，使子元素垂直排列 */
+        align-items: center;
+        justify-content: start;
+        height: 100vh;
+        background-image: url(https://s21.ax1x.com/2024/10/11/pAYZOJS.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      .box {
+        display: flex;
+        align-items: center; /* 使子元素在交叉轴上居中对齐 */
+        justify-content: center; /* 使子元素在主轴上居中对齐 */
+        z-index: 1;
+      }
+      #shuRuKuang {
+        border: 0;
+        border-bottom: 2px solid #fff;
+        padding: 4px 2px;
+        display: block;
+        background: none;
+        line-height: 1.5;
+        outline: none;
+        text-align: center;
+        transition: border-color 0.2s ease-in-out;
+        border-radius: 0;
+        color: #393434;
+        font-size: 2rem;
+        max-width: 90%;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      #anNiu {
+        margin-right: 10px;
+        color: #ccc;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+      }
+      #txt {
+        display: flex;
+        justify-content: center;
+        font-size: 60px;
+        z-index: 2;
+        position: fixed;
+        color: rgb(20, 181, 181);
+        margin: 105px 50px 0px 0px;
+        transition: all 0.5s;
+      }
+      .description {
+        margin-right: 10px;
+        text-align: center; /* 文本居中 */
+        margin-bottom: 20px; /* 与输入框之间的间距 */
+        color: #383131; /* 文本颜色，您可以根据需要调整 */
+        font-size: 1.8rem; /* 文本大小 */
+        font-family: "Arial", sans-serif;
+      }
+      input::placeholder {
+        color: #ccc;
+      }
+      input::-webkit-input-placeholder {
+        color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="txt">17:59:15</div>
+    <div contenteditable="plaintext-only"></div>
+    <p class="description">重要的事</p>
+    <input
+      placeholder="今日计划..."
+      id="shuRuKuang"
+      readonly=""
+      style="border-bottom-color: transparent"
+    />
+    <span id="anNiu" onclick="change()">✘</span>
+    <script>
+      let youShi = false;
+
+      function change() {
+        let anNiu = document.getElementById("anNiu");
+        let shuRuKuang = document.getElementById("shuRuKuang");
+
+        if (youShi) {
+          youShi = false;
+          anNiu.innerText = "✔";
+          shuRuKuang.style.borderBottomColor = "#fff";
+          shuRuKuang.value = "";
+          shuRuKuang.readOnly = false;
+          window.localStorage.removeItem("shi");
+        } else {
+          youShi = true;
+          anNiu.innerText = "✘";
+          shuRuKuang.style.borderBottomColor = "transparent";
+          shuRuKuang.readOnly = true;
+          window.localStorage.setItem("shi", shuRuKuang.value);
+        }
+      }
+      let data = window.localStorage.getItem("shi");
+      if (data) {
+        document.getElementById("shuRuKuang").value = data;
+        change();
+      }
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds(); // 在小于10的数字前加一个‘0’
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
+        t = setTimeout(function () {
+          startTime(), 500;
+        });
+      }
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
+    </script>
+  </body>
+</html>

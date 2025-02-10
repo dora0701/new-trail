@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>therapist_Luna</title>
+    <link
+      rel="icon"
+      href="https://s21.ax1x.com/2024/11/29/pA5JnP0.png"
+      type="image/x-icon"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background-color: #eee;
+      }
+      /* * {
+        border: 1px solid black;
+      } */
+      .yinying {
+        box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+          rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+      }
+      .flex {
+        display: flex;
+      }
+      .baise {
+        background-color: #fff;
+      }
+      .flex1 {
+        flex: 1;
+      }
+      .column {
+        flex-direction: column;
+      }
+      .mg8 {
+        margin: 8px;
+      }
+      .mgr8 {
+        margin-right: 8px;
+      }
+      .mgt8 {
+        margin-top: 8px;
+      }
+      .daohang {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgb(192, 192, 192);
+        font-size: 14px;
+        color: #666;
+      }
+      .chinese-font {
+        font-family: "Microsoft YaHei", "SimHei", sans-serif;
+      }
+      /* 当屏幕宽度小于等于 600px 时，应用样式 */
+      @media (max-width: 600px) {
+        .yincang {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <!-- 侧边栏-->
+    <div style="width: 200px; z-index: 2" class="baise yinying">
+      <!--头像栏-->
+      <div
+        style="
+          padding: 10px;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid #999;
+        "
+        class="flex-direction: column"
+      >
+        <img
+          src="https://s21.ax1x.com/2024/11/27/pA4sptg.md.jpg"
+          width="160px"
+          height="200px"
+          alt="pA4sptg.jpg"
+        />
+        <div style="margin-left: 10px" class="chinese-font">Luna</div>
+      </div>
+      <!-- 导航栏-->
+      <div class="flex1">
+        <div class="daohang chinese-font">
+          <a href="https://dora0701.github.io/new-trail/blank.html">关于Luna</a>
+        </div>
+        <div class="daohang chinese-font">
+          <a href="https://dora0701.github.io/new-trail/letter.html"
+            >我和心理咨询</a
+          >
+        </div>
+        <div class="daohang chinese-font">
+          预约
+          <button onclick="myFunction()">GO</button>
+          <script>
+            function myFunction() {
+              alert("咨询预约已满\n可排队或转介");
+            }
+          </script>
+        </div>
+        <div class="daohang chinese-font">咨询室</div>
+        <div class="daohang chinese-font">了解更多</div>
+        <div class="daohang chinese-font">
+          <button id="s" onclick="shou()">👍</button>
+          <button id="dzs" onclick="dianzan()">0</button>
+          <script>
+            function shou() {
+              let dianzanshubiaoqian = window.document.getElementById("dzs");
+              let dianzanshu = parseInt(dianzanshubiaoqian.innerText);
+              let xinshuzi = dianzanshu + 1;
+              dianzanshubiaoqian.innerText = xinshuzi;
+              return;
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+    <!-- 主区域-->
+    <div class="flex1 flex column">
+      <!--头部栏-->
+      <div style="height: 60px; z-index: 1" class="baise yinying"></div>
+      <!--内容区-->
+      <div style="overflow: auto" class="flex">
+        <!--左区-->
+        <div style="flex: 3" class="flex column mg8">
+          <!--数据区-->
+          <div class="flex">
+            <!--数据块-->
+            <div style="height: 100px" class="flex1 baise mgr8 yinying"></div>
+            <div style="height: 100px" class="flex1 baise mgr8 yinying"></div>
+            <div style="height: 100px" class="flex1 baise mgr8 yinying"></div>
+            <div style="height: 100px" class="flex1 baise yinying"></div>
+          </div>
+          <!--列表区-->
+          <div class="flex column">
+            <!--列表项-->
+            <div style="height: 160px" class="baise mgt8 yinying"></div>
+            <div style="height: 160px" class="baise mgt8 yinying"></div>
+            <div style="height: 160px" class="baise mgt8 yinying"></div>
+            <div style="height: 160px" class="baise mgt8 yinying"></div>
+            <div style="height: 160px" class="baise mgt8 yinying"></div>
+            <div style="height: 160px" class="baise mgt8 yinying"></div>
+          </div>
+        </div>
+        <!--右区-->
+        <div style="flex: 1" class="yincang column mgr8 mgt8">
+          <!-- 提示区 -->
+          <div style="height: 150px" class="baise yinying"></div>
+          <!-- 消息区 -->
+          <div style="height: 300px" class="baise mgt8 yinying"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

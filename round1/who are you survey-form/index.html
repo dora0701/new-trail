@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+  </head>
+
+  <body>
+    <h1 id="title">have a talk with Luna</h1>
+    <p id="description">
+      if you want to have a talk with me, tell me about your mother, i will
+      contact you asap.
+    </p>
+
+    <form id="survey-form">
+      <div>
+        <label id="name-label"
+          >Name
+          <input id="name" type="text" placeholder="Enter your name" required />
+        </label>
+
+        <label id="email-label"
+          >Email
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            required
+          />
+        </label>
+
+        <label id="number-label"
+          >Age
+          <input
+            id="number"
+            type="number"
+            min="18"
+            max="100"
+            placeholder="Age"
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label
+          >Which option best describes your current role?
+          <select id="dropdown">
+            <option>select your role</option>
+            <option>cat</option>
+            <option>bird</option>
+            <option>dog</option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <legend>What is your favorite color?</legend>
+        <label for="color-red">
+          <input
+            id="color-red"
+            type="radio"
+            value="red"
+            name="color"
+            class="inline"
+            checked
+          />red
+        </label>
+        <label for="color-green">
+          <input
+            id="color-green"
+            type="radio"
+            value="green"
+            name="color"
+            class="inline"
+          />green
+        </label>
+      </div>
+      <div>
+        What foods do you like?
+        <label>
+          <input
+            id="food"
+            type="checkbox"
+            value="apple"
+            name="food"
+            class="inline"
+          />apple
+        </label>
+        <label
+          ><input
+            id="food"
+            type="checkbox"
+            value="orange"
+            class="inline"
+          />orange
+        </label>
+        <label
+          ><input
+            id="food"
+            type="checkbox"
+            value="banana"
+            class="inline"
+          />banana
+        </label>
+      </div>
+      <div>
+        <label for="suggestions"
+          >Any comments or suggestions?<textarea
+            id="suggestions"
+            name="suggestions"
+            raws="5"
+            cols="30"
+            placeholder="I like coding on the beach..."
+          ></textarea>
+        </label>
+      </div>
+      <input id="submit" type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

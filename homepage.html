@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我爱工作</title>
+    <link
+      rel="icon"
+      href="https://s21.ax1x.com/2024/12/12/pAbeDiV.png"
+      type="image/jpeg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="250x250"
+      href="https://s21.ax1x.com/2024/12/12/pAbeDiV.png"
+    />
+    <style>
+      body {
+        background-image: url(https://s21.ax1x.com/2024/10/11/pAYZOJS.jpg);
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-size: 100% 100%;
+        height: 100vh;
+        margin: 0px;
+      }
+      .a {
+        display: flex;
+        align-items: center;
+      }
+      #shurukuang {
+        border-bottom: 2px solid #fff;
+        padding: 0px 0px;
+        text-align: center;
+        position: absolute; /* 或者使用 fixed, relative 根据需要 */
+        top: 22%;
+        left: 50%; /* 相对于父元素或页面水平居中 */
+        transform: translateX(-50%); /* 微调以确保完全居中 */
+        background-color: rgb(255, 255, 255);
+        border: 0px solid #ccc;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: #fff;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: scroll;
+        background-image: linear-gradient(
+          to right,
+          rgb(255, 255, 255),
+          rgb(255, 255, 255)
+        );
+        line-height: 1.5;
+        outline: none;
+        border-radius: 0;
+        color: rgb(117 117 117);
+        font-size: 2rem;
+        width: 50%;
+      }
+      #anniu {
+        margin-left: -50px;
+        margin-right: 10px;
+        position: absolute; /* 或者使用 fixed, relative 根据需要 */
+        top: 24%;
+        left: 80%;
+        transform: translateX(-50%); /* 微调以确保完全居中 */
+        color: rgb(95, 95, 95);
+        border-radius: 50%;
+        height: 30px;
+        width: 40px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+      }
+      #jinri {
+        font-size: 2rem;
+        font-family: "Arial", sans-serif;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        top: 16%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-height: 50%;
+        overflow: auto;
+        overflow-y: scroll;
+        background-color: rgb(253, 184, 239);
+        margin-top: 20px;
+      }
+      #txt {
+        font-size: 2rem;
+        font-family: "Arial", sans-serif;
+        color: #ffffff;
+        text-align: center;
+        transition: all 0.5s;
+        position: absolute;
+        top: 12%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-height: 50%;
+        overflow: auto;
+        overflow-y: scroll;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      #date {
+        font-size: 2rem;
+        font-family: "Arial", sans-serif;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-height: 50%;
+        overflow: auto;
+        overflow-y: scroll;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin-top: 20px;
+      }
+      @media (max-width: 800px) {
+        .tp {
+          height: 100vh;
+          background-image: url(https://s21.ax1x.com/2024/10/11/pAYZOJS.jpg);
+        }
+      }
+    </style>
+  </head>
+  <body class="tp" onload="startTime()">
+    <div id="date"></div>
+    <div id="txt">10:02:38</div>
+    <div id="jinri">今日要事</div>
+    <div class="a">
+      <input
+        placeholder="最重要的事？"
+        id="shurukuang"
+        style="border-bottom-color: rgb(255, 255, 255)"
+      />
+      <span id="anniu" onclick="change()">✔</span>
+      <script>
+        let youshi = false;
+
+        function change() {
+          let anniu = document.getElementById("anniu");
+          let shurukuang = document.getElementById("shurukuang");
+
+          if (youshi) {
+            youshi = false;
+            anniu.innerText = "✔";
+            shurukuang.style.borderBottomColor = "#fff";
+            shurukuang.value = "";
+            shurukuang.readOnly = false;
+            window.localStorage.removeItem("shi");
+          } else {
+            youshi = true;
+            anniu.innerText = "✘";
+            shurukuang.style.borderBottomColor = "transparent";
+            shurukuang.readOnly = true;
+            window.localStorage.setItem("shi", shurukuang.value);
+          }
+        }
+
+        let data = window.localStorage.getItem("shi");
+        if (data) {
+          document.getElementById("shurukuang").value = data;
+          change();
+        }
+
+        function startTime() {
+          var today = new Date();
+          var h = today.getHours();
+          var m = today.getMinutes();
+          var s = today.getSeconds();
+          m = checkTime(m);
+          s = checkTime(s);
+          document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
+          setTimeout(startTime, 1000);
+        }
+
+        function updateDate() {
+          var today = new Date();
+          var year = today.getFullYear();
+          var month = today.getMonth() + 1; // 月份是从0开始的
+          var day = today.getDate();
+          var dateStr = year + "年" + month + "月" + day + "日";
+          document.getElementById("date").innerHTML = dateStr;
+        }
+
+        function checkTime(i) {
+          if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+        }
+
+        // 页面加载完成后开始计时和更新日期
+        window.onload = function () {
+          startTime();
+          updateDate();
+        };
+      </script>
+    </div>
+  </body>
+</html>
